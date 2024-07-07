@@ -1,0 +1,1 @@
+-So this is a basic pygame project which i will be building to learn pygame and its mechanics.
