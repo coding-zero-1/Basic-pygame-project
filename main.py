@@ -21,6 +21,8 @@ score_rectangle = score_surface.get_rect(topleft=(0,10))
 
 snail_surface = pygame.image.load('Basic-pygame-project/graphics/snail/snail1.png').convert_alpha()
 snail_rectange=snail_surface.get_rect(midbottom=(700,300))
+# snail_surface1 = pygame.image.load('Basic-pygame-project/graphics/snail/snail1.png').convert_alpha()
+# snail_rectange1=snail_surface1.get_rect(midbottom=(700,300))
 # snail_position=700
 player_surface = pygame.image.load('Basic-pygame-project/graphics/Player/player_walk_1.png').convert_alpha()
 player_rectangle = player_surface.get_rect(midbottom=(70,300))
