@@ -27,6 +27,8 @@ to_quit = test_font.render("To quit press 'q'",False,(0,0,0))
 
 snail_surface = pygame.image.load('Basic-pygame-project/graphics/snail/snail1.png').convert_alpha()
 snail_rectange=snail_surface.get_rect(midbottom=(700,300))
+snail_surface2 = pygame.image.load('Basic-pygame-project/graphics/snail/snail1.png').convert_alpha()
+snail_surface2_rectangle = snail_surface2.get_rect(midbottom =(400,300))
 player_surface = pygame.image.load('Basic-pygame-project/graphics/Player/player_walk_1.png').convert_alpha()
 player_rectangle = player_surface.get_rect(midbottom=(70,300))
 player_gravity = 0
@@ -50,6 +52,7 @@ while True:
                 if event.key == pygame.K_BACKSPACE:
                     game_active=True
                     snail_rectange.right =800
+                    snail_surface2_rectangle.right = 400
                     start_time = pygame.time.get_ticks()
                 if event.key == pygame.K_q:
                     pygame.quit()
@@ -61,16 +64,18 @@ while True:
         pygame.draw.rect(screen,'#c0e8ec',score_rectangle,6)
         screen.blit(score_surface,score_rectangle) 
         screen.blit(snail_surface,snail_rectange)
+        screen.blit(snail_surface2,snail_surface2_rectangle)
         snail_rectange.left-=5
+        snail_surface2_rectangle.left -=5.5
         display_score()
         if snail_rectange.right<0:
             snail_rectange.right=850
+        if snail_surface2_rectangle.right<-100:
+            snail_surface2_rectangle.right=810
         if player_rectangle.left>800:
             player_rectangle.left = -30
-        '''
-        snail_position-=3
-        if snail_position<0:
-            snail_position=800'''
+        
+        
         player_gravity+=1
         player_rectangle.y += player_gravity 
         if player_rectangle.bottom>=300:
@@ -78,6 +83,8 @@ while True:
         screen.blit(player_surface,player_rectangle)
         
         if snail_rectange.colliderect(player_rectangle):
+            game_active = False
+        if snail_surface2_rectangle.colliderect(player_rectangle):
             game_active = False
     else:
         screen.blit(sky_surface,(0,0))
